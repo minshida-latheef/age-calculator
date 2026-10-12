@@ -1,0 +1,470 @@
+/* ---------- Global styles ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #6257e8;
+    --primary-dark: #4d40cb;
+    --purple: #8a63ed;
+    --text: #242344;
+    --muted: #77758e;
+    --surface: #ffffff;
+    --soft-bg: #f6f5ff;
+    --border: #e7e5f4;
+    --danger: #dc3545;
+}
+
+html {
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, #6257e8, #8464e9 55%, #b18af5);
+    line-height: 1.5;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid #a99aff;
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- Page layout ---------- */
+.page-wrapper {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 16px;
+}
+
+.calculator-card {
+    width: 100%;
+    max-width: 620px;
+    min-width: 0;
+    padding: clamp(22px, 5vw, 42px);
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(34, 23, 104, 0.22);
+    animation: slide-up 0.65s ease both;
+}
+
+/* ---------- Header ---------- */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 16px;
+    display: grid;
+    place-items: center;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #eeebff, #e4dcff);
+    font-size: 32px;
+}
+
+.eyebrow {
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -1.2px;
+    overflow-wrap: anywhere;
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* ---------- Date input ---------- */
+#age-form label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.calendar-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+#birth-date {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 54px;
+    padding: 13px 14px 13px 45px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #faf9ff;
+    color: var(--text);
+    color-scheme: light;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#birth-date:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(98, 87, 232, 0.12);
+    outline: none;
+}
+
+.error-message {
+    min-height: 0;
+    margin-top: 6px;
+    color: var(--danger);
+    font-size: 0.84rem;
+}
+
+.error-message:not(:empty) {
+    margin-bottom: 5px;
+}
+
+/* ---------- Buttons ---------- */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.btn {
+    min-height: 50px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s,
+                background-color 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    flex: 1;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--purple));
+    box-shadow: 0 7px 16px rgba(98, 87, 232, 0.2);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), #7450dc);
+    box-shadow: 0 10px 22px rgba(98, 87, 232, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    min-width: 90px;
+    color: var(--primary);
+    background: #f0eeff;
+}
+
+.btn-secondary:hover {
+    background: #e5e1ff;
+}
+
+/* ---------- Results ---------- */
+.results {
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    animation: fade-in 0.4s ease both;
+}
+
+.results h2 {
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.age-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.age-box {
+    min-width: 0;
+    padding: 20px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #e5e0ff;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #f5f3ff, #eeebff);
+}
+
+.age-number {
+    color: var(--primary);
+    font-size: clamp(1.7rem, 5vw, 2.35rem);
+    font-weight: 800;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+}
+
+.age-label {
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.message-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #f5f2ff;
+    color: #5745b9;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.message-icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.birthday-status {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.stats-heading {
+    margin: 28px 0 14px;
+    font-size: 1rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.stat-box {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+}
+
+.stat-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--soft-bg);
+    font-size: 1.15rem;
+}
+
+.stat-box > div {
+    min-width: 0;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.stat-value {
+    margin-top: 3px;
+    color: var(--text);
+    font-size: clamp(0.95rem, 3vw, 1.15rem);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+}
+
+.disclaimer {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+}
+
+/* ---------- Animations ---------- */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ---------- Small phones: 320px–480px ---------- */
+@media (max-width: 480px) {
+    .page-wrapper {
+        padding: 16px 10px;
+        align-items: flex-start;
+    }
+
+    .calculator-card {
+        padding: 24px 17px;
+        border-radius: 20px;
+    }
+
+    .header {
+        margin-bottom: 24px;
+    }
+
+    .logo {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        font-size: 28px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .age-grid {
+        gap: 7px;
+    }
+
+    .age-box {
+        padding: 16px 4px;
+    }
+
+    .age-label {
+        font-size: 0.78rem;
+    }
+
+    .stats-grid {
+        gap: 8px;
+    }
+
+    .stat-box {
+        gap: 8px;
+        padding: 10px 8px;
+    }
+
+    .stat-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    footer {
+        font-size: 0.73rem;
+    }
+}
+
+/* ---------- Tablets: 768px–1024px ---------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .calculator-card {
+        max-width: 680px;
+        padding: 38px;
+    }
+}
+
+/* ---------- Laptops and larger desktops ---------- */
+@media (min-width: 1025px) {
+    .calculator-card {
+        max-width: 680px;
+    }
+}
+
+/* ---------- Very wide displays ---------- */
+@media (min-width: 1441px) {
+    .calculator-card {
+        max-width: 720px;
+    }
+
+    .page-wrapper {
+        padding: 48px;
+    }
+}

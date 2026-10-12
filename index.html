@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#6257e8">
+    <meta name="description" content="Calculate your exact age in years, months, and days with this free Age Calculator.">
+    <title>Age Calculator | Discover Your Age</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="page-wrapper">
+        <section class="calculator-card" aria-labelledby="page-title">
+            <div class="header">
+                <div class="logo" aria-hidden="true">🎂</div>
+                <p class="eyebrow">YOUR PERSONAL AGE TOOL</p>
+                <h1 id="page-title">Age Calculator</h1>
+                <p class="subtitle">
+                    Discover your exact age in seconds!
+                </p>
+            </div>
+
+            <form id="age-form" novalidate>
+                <label for="birth-date">Enter your date of birth</label>
+
+                <div class="input-wrapper">
+                    <span class="calendar-icon" aria-hidden="true">📅</span>
+                    <input
+                        type="date"
+                        id="birth-date"
+                        name="birth-date"
+                        required
+                        aria-describedby="date-error"
+                    >
+                </div>
+
+                <p id="date-error" class="error-message"
+                   role="alert" aria-live="polite"></p>
+
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">
+                        Calculate Age <span aria-hidden="true">→</span>
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        Reset
+                    </button>
+                </div>
+            </form>
+
+            <section id="results" class="results" hidden
+                     aria-labelledby="result-title">
+                <h2 id="result-title">Your Exact Age</h2>
+
+                <div class="age-grid">
+                    <article class="age-box">
+                        <span id="years" class="age-number">0</span>
+                        <span class="age-label">Years</span>
+                    </article>
+                    <article class="age-box">
+                        <span id="months" class="age-number">0</span>
+                        <span class="age-label">Months</span>
+                    </article>
+                    <article class="age-box">
+                        <span id="days" class="age-number">0</span>
+                        <span class="age-label">Days</span>
+                    </article>
+                </div>
+
+                <div class="message-box">
+                    <span class="message-icon" aria-hidden="true">✨</span>
+                    <p id="age-message">You are growing wonderfully!</p>
+                </div>
+
+                <p id="birthday-status" class="birthday-status"></p>
+
+                <h3 class="stats-heading">Your Life in Numbers</h3>
+
+                <div class="stats-grid">
+                    <article class="stat-box">
+                        <span class="stat-icon" aria-hidden="true">📆</span>
+                        <div>
+                            <p class="stat-label">Total Months</p>
+                            <p id="total-months" class="stat-value">0</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-box">
+                        <span class="stat-icon" aria-hidden="true">🗓️</span>
+                        <div>
+                            <p class="stat-label">Total Weeks</p>
+                            <p id="total-weeks" class="stat-value">0</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-box">
+                        <span class="stat-icon" aria-hidden="true">☀️</span>
+                        <div>
+                            <p class="stat-label">Total Days</p>
+                            <p id="total-days" class="stat-value">0</p>
+                        </div>
+                    </article>
+
+                    <article class="stat-box">
+                        <span class="stat-icon" aria-hidden="true">⏰</span>
+                        <div>
+                            <p class="stat-label">Total Hours*</p>
+                            <p id="total-hours" class="stat-value">0</p>
+                        </div>
+                    </article>
+                </div>
+
+                <p class="disclaimer">
+                    *Total hours are approximate, based on 24 hours per day.
+                </p>
+            </section>
+
+            <footer>
+                Made with <span aria-label="love">❤️</span> using
+                HTML, CSS &amp; JavaScript
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
